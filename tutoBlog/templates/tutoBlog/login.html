@@ -1,0 +1,59 @@
+{% extends "tutoBlog/base.html" %}
+{% load static %}
+
+{% block title %}Anmelden{% endblock %}
+{% block body_class %}page-login{% endblock %}
+
+{% block body %}
+  <div class="login-shell">
+    <section class="login-visual">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <div class="login-visual-inner">
+        <div class="brand-row"><span class="brand-mark">M</span> MUGLER SE</div>
+        <p class="slogan-pill">Start the green way</p>
+        <h1>Wissen, das vor Ort ankommt.</h1>
+        <p class="login-lead">Prozessschulungen für die Teams der MUGLER SE. Angelegt von Personalentwicklung und Bereichsleitung, gelernt in der Niederlassung.</p>
+        <ol class="login-steps">
+          <li><span>01</span> Schulung anlegen, als Text oder Schritt für Schritt</li>
+          <li><span>02</span> Einer Niederlassung zuordnen</li>
+          <li><span>03</span> Im Team durcharbeiten</li>
+        </ol>
+      </div>
+      <div class="login-visual-foot">
+        <div class="login-stats">
+          <p><strong id="stat-schulungen">0</strong><span>veröffentlichte Schulungen</span></p>
+          <p><strong id="stat-orte">6</strong><span>Niederlassungen</span></p>
+        </div>
+      </div>
+    </section>
+    <section class="login-panel">
+      <div class="login-card">
+        <p class="eyebrow">Personalplanung</p>
+        <h2>Anmelden</h2>
+        <p class="quiet">Nur mit Ihrer Personalnummer. Das Modul ist für Mitarbeitende der MUGLER SE.</p>
+        <form id="login-form" novalidate>
+          <label class="field">
+            <span>Personalnummer</span>
+            <input id="personalnummer" name="personalnummer" inputmode="numeric" autocomplete="off" placeholder="00000" autofocus>
+          </label>
+          <p class="form-error" id="login-error" role="alert"></p>
+          <button class="btn btn-green" type="submit">Anmelden</button>
+        </form>
+        <p class="continue-line" id="continue" hidden>
+          Sie sind angemeldet als <strong id="continue-name"></strong>.
+          <a id="continue-link" href="{% url 'tutoBlog:hr-dashboard' %}">Weiter zur Übersicht</a>
+        </p>
+        <div class="demo-box">
+          <p>Prototyp auf diesem Rechner. Ein Klick meldet den Zugang an.</p>
+          <div class="demo-list" id="demo-list"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'tutoBlog/js/pages.js' %}"></script>
+  <script>MuglerPages.login();</script>
+{% endblock %}

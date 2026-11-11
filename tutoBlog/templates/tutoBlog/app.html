@@ -1,0 +1,16 @@
+{% extends "tutoBlog/base.html" %}
+
+{% block body %}
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+  <div class="app">
+    <aside class="sidebar" id="shell-side"></aside>
+    <div class="main">
+      <header class="topbar" id="shell-top"></header>
+      <main class="content" id="page">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+  {% block modals %}{% endblock %}
+  <div class="toast-stack" id="toasts" aria-live="polite"></div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Prozessschulungen{% endblock %} · MUGLER SE</title>
+  <link rel="icon" href="{% static 'tutoBlog/favicon.svg' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  {% block extra_css %}{% endblock %}
+  <link href="{% static 'tutoBlog/css/app.css' %}" rel="stylesheet">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <noscript><p class="noscript">Bitte aktivieren Sie JavaScript, um die Schulungen zu nutzen.</p></noscript>
+  {% block body %}{% endblock %}
+  <script>
+    window.MUGLER_ROUTES = {
+      login: "{% url 'tutoBlog:login' %}",
+      hrDashboard: "{% url 'tutoBlog:hr-dashboard' %}",
+      hrTutorials: "{% url 'tutoBlog:hr-tutorials' %}",
+      hrEditor: "{% url 'tutoBlog:hr-editor' %}",
+      hrZuweisung: "{% url 'tutoBlog:hr-zuweisung' %}",
+      maDashboard: "{% url 'tutoBlog:ma-dashboard' %}",
+      maTutorial: "{% url 'tutoBlog:ma-tutorial' %}"
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  {% block vendor_js %}{% endblock %}
+  <script src="{% static 'tutoBlog/js/data.js' %}"></script>
+  <script src="{% static 'tutoBlog/js/store.js' %}"></script>
+  <script src="{% static 'tutoBlog/js/ui.js' %}"></script>
+  {% block page_js %}{% endblock %}
+</body>
+</html>

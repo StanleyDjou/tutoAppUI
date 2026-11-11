@@ -1,0 +1,52 @@
+{% extends "tutoBlog/app.html" %}
+{% load static %}
+
+{% block title %}Schulungen{% endblock %}
+
+{% block content %}
+  <header class="page-head">
+    <div>
+      <p class="eyebrow">Personalentwicklung</p>
+      <h1 class="page-title">Schulungen</h1>
+      <p class="quiet" id="result-count"></p>
+    </div>
+    <div class="page-actions">
+      <a class="btn btn-green" href="{% url 'tutoBlog:hr-editor' %}">Neue Schulung</a>
+    </div>
+  </header>
+  <div class="toolbar">
+    <input class="form-control" id="filter-search" type="search" placeholder="Titel oder Inhalt suchen">
+    <select class="form-select" id="filter-bereich" aria-label="Fachbereich"></select>
+    <select class="form-select" id="filter-status" aria-label="Status">
+      <option value="alle">Alle Status</option>
+      <option value="veroeffentlicht">Veröffentlicht</option>
+      <option value="entwurf">Entwurf</option>
+    </select>
+  </div>
+  <div class="card-grid" id="grid"></div>
+{% endblock %}
+
+{% block modals %}
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="delete-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="delete-title">Schulung löschen</h2>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Schließen"></button>
+        </div>
+        <div class="modal-body">
+          <p>„<strong id="delete-label"></strong>“ wird aus diesem Prototyp entfernt. Zugeordnete Teams sehen sie danach nicht mehr.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-ghost" type="button" data-bs-dismiss="modal">Abbrechen</button>
+          <button class="btn btn-danger-ghost" id="confirm-delete" type="button">Löschen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'tutoBlog/js/pages.js' %}"></script>
+  <script>MuglerPages.hrTutorials();</script>
+{% endblock %}

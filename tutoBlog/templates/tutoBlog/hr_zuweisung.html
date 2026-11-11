@@ -1,0 +1,22 @@
+{% extends "tutoBlog/app.html" %}
+{% load static %}
+
+{% block title %}Zuordnung{% endblock %}
+
+{% block content %}
+  <header class="page-head">
+    <div>
+      <p class="eyebrow">Niederlassungen</p>
+      <h1 class="page-title">Zuordnung</h1>
+      <p class="quiet">Eine Schulung erscheint bei den Mitarbeitenden, sobald sie veröffentlicht und ihrer Niederlassung zugeordnet ist. Ein Klick speichert die Zuordnung.</p>
+    </div>
+  </header>
+  <div class="matrix-wrap">
+    <table class="matrix" id="matrix"></table>
+  </div>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'tutoBlog/js/pages.js' %}"></script>
+  <script>MuglerPages.assign();</script>
+{% endblock %}

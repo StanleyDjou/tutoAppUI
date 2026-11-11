@@ -1,0 +1,71 @@
+{% extends "tutoBlog/app.html" %}
+{% load static %}
+
+{% block title %}Schulung bearbeiten{% endblock %}
+
+{% block extra_css %}
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <header class="page-head">
+    <div>
+      <a class="back-link" href="{% url 'tutoBlog:hr-tutorials' %}"><i class="bi bi-arrow-left"></i> Schulungen</a>
+      <h1 class="page-title" id="page-title">Schulung anlegen</h1>
+    </div>
+    <div class="page-actions">
+      <button class="btn btn-outline-green" id="preview" type="button">Vorschau</button>
+      <button class="btn btn-green" id="save" type="button">Speichern</button>
+    </div>
+  </header>
+  <div class="editor-layout">
+    <section>
+      <label class="visually-hidden" for="titel">Titel</label>
+      <input class="title-input" id="titel" maxlength="140" placeholder="Titel der Schulung">
+      <div id="steps"></div>
+      <button class="btn btn-dashed" id="add-step" type="button">Schritt hinzufügen</button>
+    </section>
+    <aside class="editor-side">
+      <div class="panel">
+        <div>
+          <p class="eyebrow">Status</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="status" value="entwurf" checked> Entwurf<small>nur intern sichtbar</small></label>
+            <label class="choice"><input type="radio" name="status" value="veroeffentlicht"> Veröffentlicht<small>für zugeordnete Teams</small></label>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Aufbau</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="art" value="text"> Text<small>mit Bild und Video</small></label>
+            <label class="choice"><input type="radio" name="art" value="schritte" checked> Schritte<small>vor und zurück</small></label>
+          </div>
+        </div>
+        <label class="field mb-0">
+          <span>Fachbereich</span>
+          <select class="form-select" id="fachbereich"></select>
+        </label>
+        <label class="field mb-0">
+          <span>Dauer</span>
+          <input class="form-control" id="dauer" maxlength="24" placeholder="15 Min.">
+        </label>
+        <label class="field mb-0">
+          <span>Kurzbeschreibung</span>
+          <textarea class="form-control" id="kurztext" rows="4" maxlength="280" placeholder="Worum geht es, für wen ist es gedacht?"></textarea>
+        </label>
+        <p class="hint mb-0" id="meta-stats"></p>
+        <p class="hint mb-0">Textblöcke nutzen Quill, einen freien Editor. In jedem Schritt lassen sich Text, Bild und Video in beliebiger Reihenfolge mischen.</p>
+        <a class="btn btn-outline-green" id="assign-link" href="{% url 'tutoBlog:hr-zuweisung' %}">Niederlassungen zuordnen</a>
+      </div>
+    </aside>
+  </div>
+{% endblock %}
+
+{% block vendor_js %}
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'tutoBlog/js/editor.js' %}"></script>
+  <script>EditorPage.init();</script>
+{% endblock %}
