@@ -1,0 +1,42 @@
+{% extends "tutoBlog/app.html" %}
+{% load static %}
+
+{% block title %}Überblick{% endblock %}
+
+{% block content %}
+  <section class="hero-band">
+    <div>
+      <p class="eyebrow" id="hero-date"></p>
+      <h1 class="page-title" id="hero-greet">Guten Tag.</h1>
+      <p id="hero-lead">Legen Sie Prozessschulungen an, ordnen Sie sie einer Niederlassung zu und geben Sie sie für die Teams frei.</p>
+    </div>
+    <a class="btn btn-on-dark" href="{% url 'tutoBlog:hr-editor' %}">Neue Schulung</a>
+  </section>
+  <section class="stat-grid">
+    <article class="stat"><span class="stat-label">Schulungen</span><strong class="stat-value" id="stat-all">0</strong><span class="stat-hint">im Modul</span></article>
+    <article class="stat"><span class="stat-label">Veröffentlicht</span><strong class="stat-value" id="stat-pub">0</strong><span class="stat-hint">für zugeordnete Teams sichtbar</span></article>
+    <article class="stat"><span class="stat-label">Entwürfe</span><strong class="stat-value" id="stat-draft">0</strong><span class="stat-hint">noch nicht freigegeben</span></article>
+    <article class="stat"><span class="stat-label">Ohne Zuordnung</span><strong class="stat-value" id="stat-open">0</strong><span class="stat-hint">keiner Niederlassung zugewiesen</span></article>
+  </section>
+  <div class="dash-grid">
+    <section class="panel">
+      <header class="panel-head">
+        <h2>Zuletzt bearbeitet</h2>
+        <a href="{% url 'tutoBlog:hr-tutorials' %}">Alle Schulungen</a>
+      </header>
+      <div id="recent"></div>
+    </section>
+    <section class="panel">
+      <header class="panel-head">
+        <h2>Abdeckung</h2>
+      </header>
+      <p class="hint px-3 mb-0">Veröffentlichte Schulungen je Niederlassung.</p>
+      <div class="coverage" id="coverage"></div>
+    </section>
+  </div>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'tutoBlog/js/pages.js' %}"></script>
+  <script>MuglerPages.hrDashboard();</script>
+{% endblock %}

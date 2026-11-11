@@ -1,0 +1,27 @@
+{% extends "tutoBlog/app.html" %}
+{% load static %}
+
+{% block title %}Meine Schulungen{% endblock %}
+
+{% block content %}
+  <section class="hero-band">
+    <div>
+      <p class="eyebrow" id="hero-date"></p>
+      <h1 class="page-title" id="hero-greet">Guten Tag.</h1>
+      <p>Schulungen für die Niederlassung <strong id="hero-place"></strong>. Öffnen Sie eine Schulung und gehen Sie sie in der vorgegebenen Reihenfolge durch.</p>
+    </div>
+  </section>
+  <section class="stat-grid">
+    <article class="stat"><span class="stat-label">Zugewiesen</span><strong class="stat-value" id="stat-all">0</strong><span class="stat-hint">an Ihrem Standort</span></article>
+    <article class="stat"><span class="stat-label">In Arbeit</span><strong class="stat-value" id="stat-open">0</strong><span class="stat-hint">begonnen, noch offen</span></article>
+    <article class="stat"><span class="stat-label">Abgeschlossen</span><strong class="stat-value" id="stat-done">0</strong><span class="stat-hint">für Ihre Personalnummer</span></article>
+  </section>
+  <a class="continue-banner" id="continue" hidden></a>
+  <div class="chip-row mb-3" id="chips"></div>
+  <div class="card-grid" id="grid"></div>
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'tutoBlog/js/pages.js' %}"></script>
+  <script>MuglerPages.maDashboard();</script>
+{% endblock %}
